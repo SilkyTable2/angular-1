@@ -1,61 +1,36 @@
-//var, const, let - all ways to define variables 
+document.body.style.backgroundColor="white";
 
-//const - cannot modify once declared
-//let - can modify in certain circumstances
+document.querySelector('.cardbtn').addEventListener("click", (e) => {
+  const card = document.getElementById("card");
+  const copy = card.cloneNode(true);
+  document.body.appendChild(copy);
+})
 
-const details = document.querySelector('summary');
+document.querySelector('.backgroundbtn').addEventListener("click", (e) => {
+  if (document.body.style.backgroundColor=="white"){
+    document.body.style.backgroundColor="black";
+  }
+  else if (document.body.style.backgroundColor="black") {
+    document.body.style.backgroundColor="white"
+  }
+})
 
-//toggle stats
-document.querySelector('button[data-toggle-btn]').addEventListener('click', (e) => {
-  //console.log(details.parentNode);
-  if(details.parentNode.getAttribute('open')){
-    details.parentNode.removeAttribute('open');
+document.querySelector('.deletebtn').addEventListener("click", (e) => {
+  const deleter = document.getElementById("card");
+  deleter.remove(deleter.lastElementChild);
+  })
+
+document.querySelector('.haxbtn').addEventListener("click", (e) => {
+  var descRevealer = document.getElementById("descript");
+  if (descRevealer.style.visibility === "hidden") {
+    descRevealer.style.visibility = "visible";
   }
   else{
-    details.parentNode.setAttribute('open', 'open');
-
+    descRevealer.style.visibility = "hidden";
   }
-});
+  })
 
-//duplicate
-document.querySelector('.duplicate').addEventListener('click', (e) => {
-  
-  //could also name const item-clone
-  const itemClone = document.querySelector('.wrapper').cloneNode(true);
-  document.body.appendChild(itemClone);
-
-});
-
-/*
-document.querySelector('.wrapper').addEventListener('mouseenter', (e) => {
-    alert('haha');
-});
-*/
-
-//delete
-document.querySelector('button[data-delete-btn]').addEventListener('click', function(e) {
-  let wantsTo = confirm("are you sure?");
-    //if press 'ok' and last card isn't the OG card, then do it
-
-  if (wantsTo) {
-    if (document.querySelector('.wrapper:last-child') !== document.querySelector('.wrapper')) {
-      document.querySelector('.wrapper:last-child').remove();    
-    }
-    else {
-      alert("borzoi is forever!");
-    }
-  }
-});
-
-
-
-
-//modify heading
-//if you use an id instead of a class, it would be document.querySelector('#modify');
-document.querySelector('.modify').addEventListener('click', (e) => {  
-  let name = prompt('rename the borzoi!');
-  if(name) {
-    document.querySelector('.wrapper').querySelector('h3').innerText = name;
-  }
-});
-
+document.querySelector('.headingchangebtn').addEventListener("click", (e) => {
+  const headset = document.getElementById("head");
+  headset.innerHTML = "something else";
+  })
